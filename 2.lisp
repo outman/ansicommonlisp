@@ -75,3 +75,17 @@
 (print limit)
 
 (boundp '*global*)
+
+; setf remove
+(let ((lst 5))
+  (setf lst '(A B C D))
+  (print lst)
+  (setf lst (remove 'A lst)))
+
+; Iteration
+; do ({var | (var [init-form [step-form]])}*) (end-test-form result-form*) declaration* {tag | statement}*
+(defun show-squares(start end)
+  (do ((i start (+ i 1))) ; first expr
+    ((> i end) 'done) ; second expr
+    (format t "~A ~A ~%" i (* i i )))) ; declaration expr
+
