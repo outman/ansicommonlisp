@@ -121,7 +121,7 @@
 (function +)
 #'+
 
-(apply #' '(1 2 3 4))
+(apply #'+ '(1 2 3 4))
 (apply (function +) '(1 2 3 4))
 (funcall #'+ 1 2 3 4 5)
 
