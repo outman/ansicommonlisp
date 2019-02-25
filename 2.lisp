@@ -89,3 +89,45 @@
     ((> i end) 'done) ; second expr
     (format t "~A ~A ~%" i (* i i )))) ; declaration expr
 
+; progn progn evaluates forms, in the order in which they are given. 
+; The values of each form but the last are discarded.
+(defun show-squares-recu(i end)
+  (if (> i end)
+    'done
+    (progn
+      (format -t "~A ~A ~%" i (* i i))
+      (show-squares-recu (+ i 1) end))))
+
+;dolist 
+(defun out-length(lst)
+  (let ((len 0))
+    (dolist (obj lst)
+      (setf len (+ len 1)))
+    len))
+
+(defun our-length-recur(lst)
+  (if (null lst)
+    0
+    (+ (our-length-recur (cdr lst)) 1)))
+
+;tail recur
+(defun our-length-rec(lst len)
+  (if (null lst)
+    len 
+    (our-length-rec (cdr lst) (+ len 1))))
+
+; function #'
+; apply
+(function +)
+#'+
+
+(apply #' '(1 2 3 4))
+(apply (function +) '(1 2 3 4))
+(funcall #'+ 1 2 3 4 5)
+
+; lambda
+(funcall (lambda (x y) (+ x y)) 10 20)
+(funcall (function (lambda (x) (+ x 100))) 20)
+
+; types fixnum integer rational real number atom
+(typep 27 'integer)
